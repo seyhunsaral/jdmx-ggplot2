@@ -1,28 +1,35 @@
-# ========== Exercise 3 ==========
+# ========== Exercise 2 ==========
 #        Nobel Prize Winners
 #
 # Data: https://github.com/rfordatascience/tidytuesday/tree/master/data/2019/2019-05-14
 
-
 library(ggplot2)
 library(dplyr)
-library(ggrepel)
-library(ggthemes)
+library(readr)
 
-nobel_winners <- readr::read_csv("./data/nobel_winners.csv")
+# Step 1 - Read the data from the file and take a look at the structure
+nobel_winners <- read_csv("./data/nobel_winners.csv")
 
-
-# Extracting the year from birthdate
-nobel_winners  <- nobel_winners  %>%
-  mutate(birth_year = format(nobel_winners$birth_date, '%Y'))  %>%
-# Calculating the age
-  mutate(age_awarded = prize_year - as.numeric(birth_year))
+glimpse(   )
+# or str, or summary
 
 
-nobel_winners_summary  <- nobel_winners %>%
-  group_by(category)  %>%
-  summarise( mean_age_awarded = mean(age_awarded, na.rm = TRUE), sd_age_awarded = sd(age_awarded, na.rm = TRUE) )  %>%
-  arrange(mean_age_awarded) 
+# Step 2 - Create bar chart on number of nobel winners for each category
+
+
+
+# Step 3 - Show winners by gender by mapping it to `fill` aesthethic to the 
+
+
+
+# Step 4 - Filter out individual laureates and save it to nobel_laureates_ind
+
+nobel_winners_ind  <- nobel_winners  %>%
+  filter(    )
+
+# Step 5 - Plot the same graph with the dataset nobel_laureates_ind
+
+
 
 
 nobel_winners  %>% summarise( mean = mean(age_awarded, na.rm = TRUE), min = min(age_awarded, na.rm = TRUE), max = max(age_awarded, na.rm = TRUE))  
