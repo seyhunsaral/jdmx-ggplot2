@@ -41,7 +41,7 @@ ggplot(data = nobel_winners_ind, aes(x = category)) +
 # Tip: One way of doing it is to reorder factors. To my knowledge the quickest and cleanest way would be using `fct_infreq` function that sorts factors by their frequency. You can wrap the category column directly into the function on the fly in aesthetic function.
 library(forcats)
 
-ggplot(data = nobel_winners_ind, aes(x = fct_infreq(-category))) +
+ggplot(data = nobel_winners_ind, aes(x = fct_infreq(category))) +
   geom_bar(aes(fill = gender))
 
 

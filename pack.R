@@ -3,7 +3,8 @@ list.of.packages <- c("ggplot2",
                       "readr",
                       "rworldmap",
                       "ggrepel",
-                      "ggthemes")
+                      "ggthemes",
+                      "forcats")
 
 
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
