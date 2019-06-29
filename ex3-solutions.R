@@ -1,5 +1,6 @@
 # ========== Exercise 3 ==========
-# Recreate the graph shown in the slides
+# Recreate the graph shown in the slides.
+# Nobel winners data should be already on your workspace. Add if necessary.
 
 # Step 1 - Create the average age (atomic) vector
 average_age  <- mean(nobel_winners$age_awarded, na.rm = TRUE)
@@ -12,7 +13,7 @@ nobel_winners_summary  <- nobel_winners %>%
 
 # Step 3 - Create the ggplot2 with layers
 
-# Tip - You can use the library ggrepel for a better placemnt of the text
+# Tip - You can use the library ggrepel for a better text placement
 
 # Step 4 - Add theme_economist() to your plot
 
@@ -26,7 +27,8 @@ ggplot(nobel_winners, aes(y = category, x = age_awarded, color = category))+
     geom_point(data = nobel_winners_summary,
                aes(x =mean_age_awarded), size = 10) +
     geom_text_repel(aes(label = full_name), data = filter(nobel_winners, age_awarded == min(nobel_winners$age_awarded, na.rm = TRUE) | age_awarded == max(nobel_winners$age_awarded, na.rm = TRUE)), color = "black") +
- theme_economist()
+ theme_economist() +
+ guides(fill=FALSE, color = FALSE)
 
 ## Note: Further improvements are left to the participants
 
