@@ -1,22 +1,27 @@
-# ========== Exercise 1 ==========
-#        Sorting Factors
-#
-# Data: World Happiness Report 2018
+# ========== Exercise 3 ==========
+# Recreate the graph shown in the slides
+
+# Step 1 - Create the average age (atomic) vector
+average_age  <- mean(nobel_winners$age_awarded, na.rm = TRUE)
+
+# Step 2 - Create the summary for each category
+nobel_winners_summary  <- nobel_winners %>%
+  group_by(category)  %>%
+  summarise( mean_age_awarded = mean(age_awarded, na.rm = TRUE))  %>%
+  arrange(mean_age_awarded)
+
+# Step 3 - Create the ggplot2 with layers
+
+# Tip - You can use the library ggrepel for a better placemnt of the text
+library(ggrepel)
+
+ggplot(nobel_winners, aes(y = category, x = age_awarded, color = category))+
+    geom_vline( xintercept = mean(nobel_winners$age_awarded, na.rm = TRUE), color = "gray20", linetype = "dashed") +
+    geom_jitter(alpha = 0.3, width = 0.0, height = 0.1, size = 2) +i
+    geom_point(data = nobel_winners_summary,
+               aes(x =mean_age_awarded), size = 10) +
+    geom_text_repel(aes(label = full_name), data = filter(nobel_winners, age_awarded == min(nobel_winners$age_awarded, na.rm = TRUE) | age_awarded == max(nobel_winners$age_awarded, na.rm = TRUE)), color = "black")
 
 
-# load the ggplot2 library
-library(ggplot2)
-library(dplyr)
-library(forcats)
 
-# load the data
-happiness_data  <- readRDS("./data/happiness_data.rds")
 
-happiness_data  %>%
-  filter(happiness > 7.3 | happiness < 3.6)  %>%
- mutate(country = fct_reorder(country, happiness))  %>% 
-ggplot(aes(y = happiness, x = country)) +
-  geom_bar(stat = "identity", fill = "darkblue") #+
-#  geom_point(size = 4) +
-#  coord_flip()
-  
