@@ -11,8 +11,11 @@
 # Step 3 - Create the ggplot2 with layers
 
 # Tip - You can use the library ggrepel for a better placemnt of the text
+
 library(ggrepel)
 
 
+# Step 4 - Add theme_economist() to your plot
+library(ggthemes)
 
 
